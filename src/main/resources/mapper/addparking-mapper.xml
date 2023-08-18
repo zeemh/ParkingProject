@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.project.mapper.AddParkingMapper">
+	<resultMap type="addparking" id="addparking">
+		<!-- column = 조회된 결과의 컬럼명 property = 클래스의 필드명 -->
+		<id column="park_num" property="parkNum" />
+		<result column="address" property="address" />
+		<result column="price" property="price" />
+		<result column="park_description" property="parkDescription" />
+		<result column="user_num" property="userNum" />
+		<result column="park_size" property="parkSize" />
+	</resultMap>
+	
+	<insert id="insertAddparking" parameterType="addparking">
+		insert into parking
+		values(parking_num_seq.nextval,#{address},#{price},#{parkDescription},#{userNum},#{parkSize})
+	</insert>
+	<select id="selectFile" parameterType="int">
+		select * from parking where park_num = #{parkNum}
+ 	</select> 
+
+</mapper>
